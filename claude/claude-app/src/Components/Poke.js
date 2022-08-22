@@ -1,14 +1,30 @@
-import { FaTimes } from 'react-icons/fa';
+import { useState, useEffect } from "react"
 
 
-const Poke = ({pokemon}) => {
-  return (
+
+
+export const Poke = ({ pokemon }) => {
+    const [pokemonImage, setPokemonImage] = useState({ url: '' })
+
+    useEffect(() => {
+
+        fetch(pokemon.url)
+            .then(res => res.json())
+            .then(data => setPokemonImage(data.sprites.other.dream_world.front_default))
+
+    } , [pokemon.url])
+    
+
+
+
+
+return (
     <div className='poke'>
-        <h3>Name:  {pokemon.name}  <FaTimes style= {{color: 'red', cursor: 'pointer'}}/>
-        </h3> 
-        <p>Type: {pokemon.type}</p>     
+        <img id="images"src={pokemonImage} alt=""/>
+        <h1>{pokemon.name} </h1>
+
     </div>
-  )
+)
 }
 
 export default Poke

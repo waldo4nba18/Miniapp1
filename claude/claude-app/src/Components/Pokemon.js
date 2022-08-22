@@ -7,8 +7,8 @@ const Pokemon = ({pokemon}) => {
     
     <>
       {pokemon.map((pokemon) => (
-      <Poke key={pokemon.id} pokemon={pokemon}/> 
-      ))}
+      <Poke key={pokemon.id} pokemon={pokemon}   /> 
+      ))} 
     </>
   )
 }
